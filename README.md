@@ -38,7 +38,7 @@ Para rodar este projeto, você precisará ter instalado em sua máquina:
    cd Backend
    ```
 2. Execute o projeto em C#:
-  ```bash
+   ```bash
    dotnet run
    ```
 3. A API estará rodando em http://localhost:5175. (Deixe este terminal aberto).
