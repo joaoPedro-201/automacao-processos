@@ -32,6 +32,12 @@ Para rodar este projeto, você precisará ter instalado em sua máquina:
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Node.js](https://nodejs.org/) (versão 18 ou superior)
 
+### Passo 0: Clonar o Repositório
+Abra o seu terminal e rode os comandos abaixo para baixar o projeto e entrar na pasta principal:
+```bash
+git clone https://github.com/joaoPedro-201/automacao-processos.git
+cd automacao-processos
+```
 ### Passo 1: Rodando o Back-end (API)
 1. Abra o terminal e navegue até a pasta do Back-end:
    ```bash
