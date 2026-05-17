@@ -76,13 +76,33 @@ function App() {
     }
   };
 
+  const excluirSolicitacao = async (id) => {
+    if (!window.confirm("Tem certeza que deseja excluir esta solicitação?")) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        buscarSolicitacoes();
+      } else {
+        alert("Erro ao excluir a solicitação.");
+      }
+    } catch (error) {
+      console.error("Erro ao excluir:", error);
+    }
+  };
+
   const qtdPendentes = solicitacoes.filter(sol => sol.status === 'Pendente').length;
   const qtdConcluidas = solicitacoes.filter(sol => sol.status === 'Concluída').length;
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
       <h1>Gestão de Solicitações</h1>
-      
+
       {/* Resumo bonûs */}
       <div style={{ display: 'flex', gap: '20px', marginBottom: '20px'}}>
         <div style={{ padding: '15px', border: '1px solid white', borderRadius: '8px', background: '#fff3cd' }}>
@@ -142,6 +162,9 @@ function App() {
                 <td>
                   <button onClick={() => concluirSolicitacao(sol.id, sol)}>
                     Concluir
+                  </button>
+                  <button onClick={() => excluirSolicitacao(sol.id)} style={{ backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+                    Excluir
                   </button>
                 </td>
               </tr>

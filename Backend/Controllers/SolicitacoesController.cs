@@ -60,5 +60,22 @@ namespace Backend.Controllers
 
             return Ok(solicitacaoExistente);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletarTarefa (int id)
+        {
+            var solicitacaoExistente = _context.Solicitacoes.Find(id);
+
+            if(solicitacaoExistente is null)
+            {
+                return NotFound("Solicitação não encontrada.");
+            }
+
+            _context.Solicitacoes.Remove(solicitacaoExistente);
+
+            _context.SaveChanges();
+
+            return Ok("Solicitação excluída com sucesso.");
+        }
     }
 }
